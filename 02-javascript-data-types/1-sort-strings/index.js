@@ -10,5 +10,5 @@ const SORTING_ORDER = {
 };
 export function sortStrings(arr, param = SORTING_ORDER.asc) {
   const sortingOrder = param === SORTING_ORDER.asc ? 1 : -1;
-  return [...arr].sort((a, b) => sortingOrder * a.localeCompare(b, ['en', 'ru'], { caseFirst: 'upper' }));
+  return [...arr].sort((a, b) => sortingOrder * a.localeCompare(b, ['ru', 'en'], { caseFirst: 'upper' }));
 }
