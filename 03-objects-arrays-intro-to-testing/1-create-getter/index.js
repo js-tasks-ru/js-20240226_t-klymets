@@ -7,8 +7,8 @@ export function createGetter(path) {
   const pathToValue = path.split('.');
   return function (obj) {
     let value = obj;
-    for (let key of pathToValue) {
-      if (value && value.hasOwnProperty(key)) {
+    for (const key of pathToValue) {
+      if (value?.hasOwnProperty(key)) {
         value = value[key];
       } else {
         return;
