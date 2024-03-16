@@ -5,11 +5,15 @@
  */
 export function createGetter(path) {
   const pathToValue = path.split('.');
-  const getValue = (obj, i = 0) => {
-    if (obj && typeof obj === 'object' && i < pathToValue.length) {
-      return getValue(obj[pathToValue[i]], ++i);
+  return function (obj) {
+    let value = obj;
+    for (let key of pathToValue) {
+      if (value && value.hasOwnProperty(key)) {
+        value = value[key];
+      } else {
+        return;
+      }
     }
-    return obj;
+    return value;
   };
-  return getValue;
 }
